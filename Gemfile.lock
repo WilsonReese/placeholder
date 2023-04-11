@@ -318,7 +318,6 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
-    sqlite3 (1.4.2)
     table_print (1.5.7)
     terminal-table (3.0.2)
       unicode-display_width (>= 1.1.1, < 3)
@@ -386,7 +385,6 @@ DEPENDENCIES
   spring
   spring-watcher-listen (~> 2.0.0)
   sprockets (< 4)
-  sqlite3 (~> 1.4.1)
   table_print
   web-console (>= 3.3.0)
   web_git!
