@@ -1,0 +1,198 @@
+<div>
+  <div>
+    <h1>
+      List of all reservations
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new reservation
+    </h2>
+
+    <form action="/insert_reservation" method="post">
+      <div>
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id">
+      </div>
+
+      <div>
+        <label for="theater_id_box">
+          Theater
+        </label>
+
+        <input type="text" id="theater_id_box" name="query_theater_id">
+      </div>
+
+      <div>
+        <label for="status_box">
+          Status
+        </label>
+
+        <input type="text" id="status_box" name="query_status">
+      </div>
+
+      <div>
+        <label for="start_box">
+          Start
+        </label>
+
+        <input type="datetime-local" id="start_box" name="query_start">
+      </div>
+
+      <div>
+        <label for="end_box">
+          End
+        </label>
+
+        <input type="datetime-local" id="end_box" name="query_end">
+      </div>
+
+      <div>
+        <label for="duration_box">
+          Duration
+        </label>
+
+        <input type="text" id="duration_box" name="query_duration">
+      </div>
+
+      <div>
+        <label for="number_guests_box">
+          Number guests
+        </label>
+
+        <input type="text" id="number_guests_box" name="query_number_guests">
+      </div>
+
+      <div>
+        <label for="content_choice_box">
+          Content choice
+        </label>
+
+        <input type="text" id="content_choice_box" name="query_content_choice">
+      </div>
+
+      <button>
+        Create reservation
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          User
+        </th>
+
+        <th>
+          Theater
+        </th>
+
+        <th>
+          Status
+        </th>
+
+        <th>
+          Start
+        </th>
+
+        <th>
+          End
+        </th>
+
+        <th>
+          Duration
+        </th>
+
+        <th>
+          Number guests
+        </th>
+
+        <th>
+          Content choice
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_reservations.each do |a_reservation| %>
+      <tr>
+        <td>
+          <%= a_reservation.id %>
+        </td>
+
+        <td>
+          <%= a_reservation.user_id %>
+        </td>
+
+        <td>
+          <%= a_reservation.theater_id %>
+        </td>
+
+        <td>
+          <%= a_reservation.status %>
+        </td>
+
+        <td>
+          <%= a_reservation.start %>
+        </td>
+
+        <td>
+          <%= a_reservation.end %>
+        </td>
+
+        <td>
+          <%= a_reservation.duration %>
+        </td>
+
+        <td>
+          <%= a_reservation.number_guests %>
+        </td>
+
+        <td>
+          <%= a_reservation.content_choice %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_reservation.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_reservation.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/reservations/<%= a_reservation.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>
