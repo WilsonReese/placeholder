@@ -26,4 +26,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :reservations, dependent: :destroy
+  
+  enum user_type: {
+    standard: 'standard',
+    admin: 'admin'
+  }
 end

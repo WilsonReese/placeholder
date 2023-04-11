@@ -8,7 +8,7 @@
 #  end            :datetime
 #  number_guests  :integer
 #  start          :datetime
-#  status         :string
+#  status         :string           default("pending")
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #  theater_id     :integer
@@ -35,6 +35,7 @@ class Reservation < ApplicationRecord
   enum status: {
     pending: 'pending',
     confirmed: 'confirmed',
-    cancelled: 'cancelled'
+    cancelled: 'cancelled',
+    completed: 'completed'
   }
 end
