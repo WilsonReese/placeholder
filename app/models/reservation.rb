@@ -28,6 +28,8 @@ class Reservation < ApplicationRecord
   belongs_to :user
   belongs_to :theater
 
+  validate :validate_guests_less_than_seats
+
   scope :upcoming_week, -> { 
     where(start: Time.zone.now..Time.zone.now + 7.days) 
   }
@@ -38,4 +40,12 @@ class Reservation < ApplicationRecord
     cancelled: 'cancelled',
     completed: 'completed'
   }
+
+  private
+
+  def validate_guests_less_than_seats
+    if number_guests.present? && theater.present? && number_guests > theater.number_of_seats
+      errors.add(:number_guests, "cannot be greater than the number of seats in the theater")
+    end
+  end
 end
