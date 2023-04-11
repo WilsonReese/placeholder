@@ -27,4 +27,14 @@
 class Reservation < ApplicationRecord
   belongs_to :user
   belongs_to :theater
+
+  scope :upcoming_week, -> { 
+    where(start: Time.zone.now..Time.zone.now + 7.days) 
+  }
+  
+  enum status: {
+    pending: 'pending',
+    confirmed: 'confirmed',
+    cancelled: 'cancelled'
+  }
 end
