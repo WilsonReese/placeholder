@@ -5,9 +5,9 @@
 #  id             :integer          not null, primary key
 #  content_choice :string
 #  duration       :float
-#  end            :datetime
+#  end_time       :datetime
 #  number_guests  :integer
-#  start          :datetime
+#  start_time     :datetime
 #  status         :string           default("pending")
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
@@ -32,7 +32,7 @@ class Reservation < ApplicationRecord
   validate :no_conflicting_reservations
 
   scope :upcoming_week, -> { 
-    where(start: Time.zone.now..Time.zone.now + 7.days) 
+    where(start_time: Time.zone.now..Time.zone.now + 7.days) 
   }
   
   enum status: {
@@ -51,7 +51,7 @@ class Reservation < ApplicationRecord
   end
 
   def no_conflicting_reservations
-    if Reservation.where(theater_id: theater_id, start: start..end).exists?
+    if Reservation.where(theater_id: theater_id, start_time: start_time..end_time).exists?
       errors.add(:base, "Conflicting reservation exists for this theater and time")
     end
   end

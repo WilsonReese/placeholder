@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_04_11_182132) do
+ActiveRecord::Schema.define(version: 2023_04_11_201245) do
 
   create_table "reservations", force: :cascade do |t|
     t.integer "user_id"
     t.integer "theater_id"
     t.string "status", default: "pending"
-    t.datetime "start"
-    t.datetime "end"
+    t.datetime "start_time"
+    t.datetime "end_time"
     t.float "duration"
     t.integer "number_guests"
     t.string "content_choice"
