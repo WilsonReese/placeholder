@@ -1,0 +1,101 @@
+<div>
+  <div>
+    <h1>
+      Theater #<%= @the_theater.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/theaters">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_theater/<%= @the_theater.id %>">
+          Delete theater
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Number of seats
+      </dt>
+      <dd>
+        <%= @the_theater.number_of_seats %>
+      </dd>
+
+      <dt>
+        Turnover time
+      </dt>
+      <dd>
+        <%= @the_theater.turnover_time %>
+      </dd>
+
+      <dt>
+        Reservations count
+      </dt>
+      <dd>
+        <%= @the_theater.reservations_count %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_theater.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_theater.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit theater
+    </h2>
+
+    <form action="/modify_theater/<%= @the_theater.id %>"  method="post" >
+      <div>
+        <label for="number_of_seats_box">
+          Number of seats
+        </label>
+
+        <input type="text" id="number_of_seats_box" name="query_number_of_seats" value="<%= @the_theater.number_of_seats %>">
+      </div>
+
+      <div>
+        <label for="turnover_time_box">
+          Turnover time
+        </label>
+
+        <input type="text" id="turnover_time_box" name="query_turnover_time" value="<%= @the_theater.turnover_time %>">
+      </div>
+
+      <div>
+        <label for="reservations_count_box">
+          Reservations count
+        </label>
+
+        <input type="text" id="reservations_count_box" name="query_reservations_count" value="<%= @the_theater.reservations_count %>">
+      </div>
+
+      <button>
+        Update theater
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
